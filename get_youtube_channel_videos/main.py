@@ -6,29 +6,33 @@ DRIVER_PATH = r'./chromedriver.exe'  # Get your Chrome version compatible driver
 
 
 def get_videos_link(wd: webdriver):
-    allVideosLink = wd.find_elements_by_css_selector(
-        """#items.style-scope.ytd-grid-renderer ytd-grid-video-renderer.style-scope.ytd-grid-renderer 
-        #dismissible.style-scope.ytd-grid-video-renderer ytd-thumbnail.style-scope.ytd-grid-video-renderer 
-        a.yt-simple-endpoint.inline-block.style-scope.ytd-thumbnail""")
+    # allVideosLink = wd.find_elements_by_css_selector(
+    #     """#items.style-scope.ytd-grid-renderer ytd-grid-video-renderer.style-scope.ytd-grid-renderer
+    #     #dismissible.style-scope.ytd-grid-video-renderer ytd-thumbnail.style-scope.ytd-grid-video-renderer
+    #     a.yt-simple-endpoint.inline-block.style-scope.ytd-thumbnail""")
 
-    return list(dict.fromkeys(map(lambda a: a.get_attribute("href"), allVideosLink)))
+    allVideosLink = wd.find_elements_by_xpath("""//*[@id="video-title"]""")
+
+    return [video.get_attribute("href") for video in allVideosLink]
 
 
 def get_videos_title(wd: webdriver):
-    allVideosTitle = wd.find_elements_by_css_selector(
-        """#items.style-scope.ytd-grid-renderer ytd-grid-video-renderer.style-scope.ytd-grid-renderer 
-        #dismissible.style-scope.ytd-grid-video-renderer #details.style-scope.ytd-grid-video-renderer 
-        #meta.style-scope.ytd-grid-video-renderer h3.style-scope.ytd-grid-video-renderer 
-        a.yt-simple-endpoint.style-scope.ytd-grid-video-renderer""")
+    # allVideosTitle = wd.find_elements_by_css_selector(
+    #     """#items.style-scope.ytd-grid-renderer ytd-grid-video-renderer.style-scope.ytd-grid-renderer
+    #     #dismissible.style-scope.ytd-grid-video-renderer #details.style-scope.ytd-grid-video-renderer
+    #     #meta.style-scope.ytd-grid-video-renderer h3.style-scope.ytd-grid-video-renderer
+    #     a.yt-simple-endpoint.style-scope.ytd-grid-video-renderer""")
 
-    return list(dict.fromkeys(map(lambda a: a.text, allVideosTitle)))
+    allVideosTitle = wd.find_elements_by_xpath("""//*[@id="video-title"]""")
+
+    return [video.text for video in allVideosTitle]
 
 
 def search(channelName):
     baseUrl = "https://www.youtube.com/c"
     videosSection = "videos"
 
-    chrome_driver_path = r'./chromedriver.exe' # Put downloaded chromedriver.exe path here
+    chrome_driver_path = r'./chromedriver.exe'
 
     option = webdriver.ChromeOptions()
     option.add_argument('headless')  # For scrapping without opening browser
