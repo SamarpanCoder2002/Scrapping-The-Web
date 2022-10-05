@@ -28,7 +28,7 @@ def get_videos_title(wd: webdriver):
     return [video.text for video in allVideosTitle]
 
 
-def search(channelName):
+def get_channel_top_videos(channelName):
     baseUrl = "https://www.youtube.com/c"
     videosSection = "videos"
 
@@ -43,7 +43,8 @@ def search(channelName):
 
         [links, titles] = [get_videos_link(wd), get_videos_title(wd)]
 
-        return [{"video_link": links[i],
+        return [{"video_id": links[i].split("?v=")[1],
+                 "video_link": links[i],
                  "video_thumbnail": f"""https://i.ytimg.com/vi/{links[i].split("?v=")[1]}/hqdefault.jpg""",
                  "video_title": titles[i]
                  }
@@ -51,7 +52,7 @@ def search(channelName):
 
 
 if __name__ == '__main__':
-    final_data = search("SamarpanDasgupta")  # Replace this with targetted channelname
+    final_data = get_channel_top_videos("SamarpanDasgupta")  # Replace this with targetted channelname
 
     print(final_data)
     print(len(final_data))
