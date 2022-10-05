@@ -1,4 +1,4 @@
-### Get particular youtube channel videos general data
+### Get particular youtube channel general data
 
 ##  Alert: You have to place chromedriver in this folder before run the project 
 
