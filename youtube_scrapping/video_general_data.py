@@ -10,11 +10,6 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 
-# def get_video_title(wd: webdriver):
-#     element = wd.find_element_by_xpath("""//*[@id="title"]/h1/yt-formatted-string""")
-#     return element.text
-
-
 def get_video_total_likes(wd: webdriver):
     try:
         element = wd.find_element_by_css_selector(
@@ -42,7 +37,8 @@ def get_video_publish_date(wd: webdriver):
 
 def get_video_description(wd: webdriver):
     try:
-        elements = wd.find_elements_by_css_selector("""div#description yt-formatted-string""")
+        elements = wd.find_elements_by_css_selector(
+            """div#description yt-formatted-string""")
 
         description: str = ''
 
@@ -56,16 +52,6 @@ def get_video_description(wd: webdriver):
 
 
 def get_comments(wd: webdriver):
-    # wait = WebDriverWait(wd, 5)
-    #
-    # for item in range(5):  # by increasing the highest range you can get more content
-    #     wait.until(EC.visibility_of_element_located((By.TAG_NAME, "body"))).send_keys(Keys.END)
-    #     time.sleep(0.5)
-    #
-    # for comment in wait.until(EC.presence_of_all_elements_located((By.CSS_SELECTOR, "#comment #content-text"))):
-    #     print(comment.text)
-    #     print("\n")
-
     elements = wd.find_elements_by_css_selector("#comment #content-text")
 
     comments_collection: str = ''
@@ -89,7 +75,8 @@ def get_video_data(videoId):
         wait = WebDriverWait(wd, 5)
 
         for item in range(3):  # by increasing the highest range you can get more content
-            wait.until(EC.visibility_of_element_located((By.TAG_NAME, "body"))).send_keys(Keys.END)
+            wait.until(EC.visibility_of_element_located(
+                (By.TAG_NAME, "body"))).send_keys(Keys.END)
             time.sleep(0.5)
 
         [total_likes, publish_date, description, all_comments] = [

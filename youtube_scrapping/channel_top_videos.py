@@ -2,26 +2,17 @@ import time
 
 from selenium import webdriver
 
-DRIVER_PATH = r'./chromedriver.exe'  # Get your Chrome version compatible driver at root of the project
+# Get your Chrome version compatible driver at root of the project
+DRIVER_PATH = r'./chromedriver.exe'
 
 
 def get_videos_link(wd: webdriver):
-    # allVideosLink = wd.find_elements_by_css_selector(
-    #     """#items.style-scope.ytd-grid-renderer ytd-grid-video-renderer.style-scope.ytd-grid-renderer
-    #     #dismissible.style-scope.ytd-grid-video-renderer ytd-thumbnail.style-scope.ytd-grid-video-renderer
-    #     a.yt-simple-endpoint.inline-block.style-scope.ytd-thumbnail""")
-
     allVideosLink = wd.find_elements_by_xpath("""//*[@id="video-title"]""")
 
     return [video.get_attribute("href") for video in allVideosLink]
 
 
 def get_videos_title(wd: webdriver):
-    # allVideosTitle = wd.find_elements_by_css_selector(
-    #     """#items.style-scope.ytd-grid-renderer ytd-grid-video-renderer.style-scope.ytd-grid-renderer
-    #     #dismissible.style-scope.ytd-grid-video-renderer #details.style-scope.ytd-grid-video-renderer
-    #     #meta.style-scope.ytd-grid-video-renderer h3.style-scope.ytd-grid-video-renderer
-    #     a.yt-simple-endpoint.style-scope.ytd-grid-video-renderer""")
 
     allVideosTitle = wd.find_elements_by_xpath("""//*[@id="video-title"]""")
 
@@ -45,14 +36,14 @@ def get_channel_top_videos(channelName):
 
         return [{"video_id": links[i].split("?v=")[1],
                  "video_link": links[i],
-                 "video_thumbnail": f"""https://i.ytimg.com/vi/{links[i].split("?v=")[1]}/hqdefault.jpg""",
+                 "video_thumbnail": f"""https://i.ytimg.com/vi/{links[i].split("?v=")[1]}/maxresdefault.jpg""",
                  "video_title": titles[i]
                  }
                 for i in range(0, len(links))]
 
 
 if __name__ == '__main__':
-    final_data = get_channel_top_videos("SamarpanDasgupta")  # Replace this with targetted channelname
+    video_collection = get_channel_top_videos("SamarpanDasgupta")
 
-    print(final_data)
-    print(len(final_data))
+    for i in range(len(video_collection)):
+        print(f"""{i+1}) {video_collection[i]}""", end="\n\n")

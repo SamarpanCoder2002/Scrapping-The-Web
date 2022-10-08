@@ -56,12 +56,13 @@ def yt_channel_general_data(channelName):
 
         channel_about_data = get_channel_about(wd)
 
-        channel_general_data = {'channel_id': channel_id, 'channel_name': channel_name,
+        jsonData = {'channel_id': channel_id, 'channel_name': channel_name,
                                 'channel_total_subscribers': total_subscribers, 'channel_avatar': channel_avatar,
                                 'channel_about': channel_about_data}
 
-        print(f'Channel general data: {channel_general_data}')
+        return jsonData
 
 
 if __name__ == '__main__':
-    yt_channel_general_data("""SamarpanDasgupta""")
+    channel_general_data = yt_channel_general_data("""SamarpanDasgupta""")
+    print(channel_general_data)
