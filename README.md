@@ -4,4 +4,4 @@
 
 #### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1) After clone this project go to target folder that you want to use.
 #### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2) Go to the targetted folder and run required libs using `pip install -r requirements.txt`
-#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3) Run main.py file
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3) Run required file
