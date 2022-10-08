@@ -47,7 +47,8 @@ def yt_channel_general_data(channelName):
         time.sleep(0.5)
 
         [channel_name, total_subscribers, channel_avatar, channel_id] = [get_channel_name(wd),
-                                                                         get_channel_subscribers(wd),
+                                                                         get_channel_subscribers(
+                                                                             wd),
                                                                          get_channel_avatar(wd), get_channel_id(wd)]
 
         wd.get(url=f"{baseUrl}/{channelName}/about")

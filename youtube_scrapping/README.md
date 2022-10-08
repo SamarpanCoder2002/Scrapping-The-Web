@@ -1,6 +1,4 @@
-### Get particular youtube channel videos general data
-
-<img src="./get_particular_channel_top_videos.png">
+### Youtube scrapping
 
 ## Alert: You have to place chromedriver in this folder before run the project
 
