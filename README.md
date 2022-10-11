@@ -6,4 +6,4 @@
 #### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2) Go to the targetted folder and run required libs using `pip install -r requirements.txt`
 #### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3) Run required file
 
-#### <center>Show 💘 by staring this repo</center>
+### <p align="center">Show 💘 by staring this repo</p>
